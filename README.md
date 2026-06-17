@@ -1,41 +1,45 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/tosh/flashlingo/main/assets/icon.png" width="100" height="100" alt="FlashLingo Logo" style="filter: drop-shadow(0 0 10px #8a2be2);">
+  <img src="https://raw.githubusercontent.com/SkyAnge05/Flashcard/main/build/icon.png" width="120" height="120" alt="FlashLingo Logo" style="filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.5)); border-radius: 20px;">
   
   <h1>⚡ FlashLingo</h1>
   
-  <p><strong>Apprends du vocabulaire, une carte à la fois.</strong></p>
-  <p>Une application moderne de flashcards conçue pour être belle, fluide et efficace sur toutes tes plateformes.</p>
+  <p><strong>Ton outil ultime pour apprendre du vocabulaire, une carte à la fois.</strong></p>
+  <p>Une application moderne de flashcards conçue pour être belle, fluide et redoutablement efficace sur toutes tes plateformes.</p>
 
   <p>
-    <img src="https://img.shields.io/badge/Version-1.0.0-blueviolet" alt="Version">
-    <img src="https://img.shields.io/badge/Plateformes-Web%20%7C%20Windows%20%7C%20Linux%20%7C%20Android-success" alt="Plateformes">
+    <a href="https://github.com/SkyAnge05/Flashcard/releases">
+      <img src="https://img.shields.io/github/v/release/SkyAnge05/Flashcard?style=for-the-badge&color=blueviolet" alt="Dernière Version">
+    </a>
+    <img src="https://img.shields.io/badge/Plateformes-Web%20%7C%20Windows%20%7C%20Linux%20%7C%20Android-success?style=for-the-badge" alt="Plateformes">
   </p>
 </div>
 
 ---
 
-## ✨ Fonctionnalités
+## ✨ Fonctionnalités Principales
 
-*   📖 **Mode Étude** : Fais défiler tes cartes de vocabulaire, retourne-les pour voir la traduction, et évalue ta propre mémorisation.
-*   🧠 **Mode Quiz** : Teste tes connaissances sérieusement. L'application te donne le mot et tu dois taper la traduction exacte.
-*   📋 **Gestion des Cartes** : Ajoute de nouvelles cartes, modifie-les, ou supprime-les facilement depuis ton espace "Liste".
-*   💾 **Sauvegarde Locale & Import/Export** : Tes données sont enregistrées en sécurité sur ton appareil. Tu peux exporter toutes tes cartes au format `.json` ou importer des listes massives de mots avec un simple copier/coller.
-*   🌙 **Design Premium** : Un design moderne avec "Glassmorphism", un mode sombre natif apaisant pour les yeux, et des transitions d'écrans extrêmement fluides.
+*   📖 **Mode Étude** : Fais défiler tes cartes de vocabulaire. Essaie de deviner, retourne-les pour voir la traduction, et évalue toi-même ta mémorisation.
+*   🧠 **Mode Quiz Intransigeant** : Teste tes connaissances sérieusement. L'application te donne le mot et tu dois taper la traduction à la lettre près !
+*   📋 **Gestion Facile des Cartes** : Ajoute de nouvelles cartes, modifie-les pour corriger une faute, ou supprime-les facilement depuis ton espace "Liste".
+*   💾 **Sécurité & Import/Export** : Tes données sont enregistrées en sécurité localement. Tu peux exporter toutes tes cartes au format `.json` ou importer des listes massives de mots d'un coup.
+*   🌙 **Design Premium** : Profite d'une interface inspirée des meilleures applications natives avec des effets "Glassmorphism", un mode sombre apaisant, et des transitions d'écrans animées et fluides.
+
+---
 
 ## 🚀 Installation & Utilisation
 
-FlashLingo fonctionne partout grâce aux technologies web, Electron et Android WebView !
+**FlashLingo** a été pensée pour être universelle. Choisis la plateforme qui te convient :
 
-### Option 1 : Dans ton navigateur (Web)
-C'est la méthode la plus simple pour tester tout de suite.
-1. Clone ce dépôt ou télécharge le code.
-2. Ouvre simplement le fichier `index.html` dans n'importe quel navigateur web.
-3. Tes cartes seront sauvegardées dans la mémoire locale de ton navigateur.
+### 🌐 Option 1 : Directement dans ton navigateur (Web)
+C'est la méthode la plus rapide pour commencer tout de suite.
+1. [Télécharge le code ZIP](https://github.com/SkyAnge05/Flashcard/archive/refs/heads/main.zip) ou clone le dépôt.
+2. Ouvre le fichier `index.html` dans n'importe quel navigateur web (Chrome, Firefox, Edge...).
+3. Tes cartes seront sauvegardées de façon permanente dans la mémoire locale de ton navigateur.
 
-### Option 2 : Application Bureau (Windows / Linux)
-Construite avec Electron pour une expérience Desktop native.
-1. Assure-toi d'avoir installé [Node.js](https://nodejs.org/).
-2. Ouvre un terminal dans ce dossier et lance l'installation :
+### 💻 Option 2 : Application Bureau (Windows / Linux)
+Profite de l'expérience native complète grâce à Electron.
+1. Installe [Node.js](https://nodejs.org/).
+2. Ouvre un terminal dans le dossier du projet et installe les dépendances :
    ```bash
    npm install
    ```
@@ -43,28 +47,33 @@ Construite avec Electron pour une expérience Desktop native.
    ```bash
    npm start
    ```
-4. **Compiler les exécutables** (`.exe` pour Windows, `.AppImage` pour Linux) :
+4. **Créer ton exécutable final** (`.exe` ou `.AppImage`) :
    ```bash
    npm run build
    ```
-   Les fichiers générés se trouveront dans le dossier `dist/`.
+   *Les fichiers finaux seront disponibles dans le dossier `dist/`.*
 
-### Option 3 : Application Mobile (Android)
-L'application est 100% compatible Android (Smartphone et Tablette) grâce à une WebView très optimisée.
-1. Ouvre le sous-dossier `android-app/` avec **Android Studio**.
-2. Attends que Gradle synchronise le projet.
-3. Clique sur **Run** pour la lancer sur ton téléphone ou sur un émulateur, ou génère un APK depuis le menu *Build > Build Bundle(s) / APK(s)*.
+### 📱 Option 3 : Application Mobile (Android)
+Emmène tes révisions partout avec toi. L'interface s'adapte parfaitement au tactile avec des transitions optimisées !
+1. Ouvre le dossier `android-app/` avec **Android Studio**.
+2. Attends que Gradle télécharge les dépendances.
+3. Branche ton téléphone Android ou lance un émulateur, puis clique sur **Run**.
+4. *Ou bien*, génère le fichier installable depuis le menu : **Build > Build Bundle(s) / APK(s)**.
+
+---
 
 ## 🛠️ Stack Technique
 
-*   **Frontend Vanilla** : HTML5 sémantique, CSS3 (Flexbox/Grid, Animations CSS), JavaScript (ES6+).
-*   **Desktop** : [Electron](https://www.electronjs.org/) & `electron-builder`.
-*   **Mobile** : Kotlin (Android WebView) & Gradle.
-
-## 🤝 Contribuer
-
-Les contributions, issues et pull requests sont les bienvenues ! N'hésite pas à proposer de nouvelles fonctionnalités ou des améliorations de l'interface.
+*   **Frontend Vanilla** : L'interface est codée de manière pure pour une légèreté maximale (HTML5 sémantique, animations CSS3, JavaScript ES6+).
+*   **Desktop** : Propulsé par le framework [Electron](https://www.electronjs.org/) & généré avec `electron-builder`.
+*   **Mobile** : Application native Kotlin intégrant une WebView pour rendre le code web compatible sur Android.
 
 ---
-*Créé avec passion.*
-# FlashLingo
+
+## 🤝 Contribution
+Tu veux améliorer FlashLingo ? N'hésite pas à ouvrir une *Issue* ou proposer une *Pull Request* pour corriger un bug ou rajouter une super fonctionnalité !
+
+<div align="center">
+  <br>
+  <i>Développé avec passion.</i>
+</div>
