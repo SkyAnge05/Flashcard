@@ -67,3 +67,4 @@ Les contributions, issues et pull requests sont les bienvenues ! N'hésite pas �
 
 ---
 *Créé avec passion.*
+# FlashLingo
