@@ -1,0 +1,41 @@
+{
+  "name": "flashlingo",
+  "version": "1.0.0",
+  "description": "Application de flashcards pour apprendre du vocabulaire",
+  "main": "main.js",
+  "author": "FlashLingo",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "build:linux": "electron-builder --linux",
+    "build:win": "electron-builder --win",
+    "build:all": "electron-builder --linux --win"
+  },
+  "build": {
+    "appId": "com.flashlingo.app",
+    "productName": "FlashLingo",
+    "files": [
+      "main.js",
+      "index.html",
+      "index.css",
+      "app.js"
+    ],
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Education",
+      "icon": "build/icon.png"
+    },
+    "win": {
+      "target": [
+        "portable"
+      ],
+      "icon": "build/icon.png"
+    }
+  },
+  "devDependencies": {
+    "electron": "^35.0.0",
+    "electron-builder": "^26.0.0"
+  }
+}
