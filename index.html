@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Application de flashcards pour apprendre du vocabulaire.">
+  <title>FlashLingo — Apprends du vocabulaire</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Main Content Area where pages slide in/out -->
+    <main class="main-content" id="main-content">
+      
+      <!-- PAGE 1 : STUDY -->
+      <section class="page study-mode" id="study-mode">
+        <!-- Header only visible on Study -->
+        <header class="header" id="app-header">
+          <div class="header-content">
+            <div class="logo">
+              <span class="logo-icon">⚡</span>
+              <h1>Flash<span class="logo-accent">Lingo</span></h1>
+            </div>
+            <p class="tagline">Apprends du vocabulaire, une carte à la fois</p>
+          </div>
+        </header>
+
+        <div class="page-scroll-content">
+          <!-- Empty State (Shows when no cards) -->
+          <div class="empty-state" id="empty-state">
+            <div class="empty-illustration">
+              <div class="empty-card empty-card-1"></div>
+              <div class="empty-card empty-card-2"></div>
+              <div class="empty-card empty-card-3"></div>
+            </div>
+            <h2>Aucune carte pour l'instant</h2>
+            <p>Commence par ajouter un mot et sa traduction pour créer ta première flashcard !</p>
+            <button class="btn btn-primary btn-large" id="btn-create-first" type="button">
+              <span class="btn-icon">＋</span>
+              Créer ma première carte
+            </button>
+          </div>
+
+          <!-- Active Study Content -->
+          <div id="study-active-content" hidden>
+            <!-- Progress Bar -->
+            <div class="progress-container" id="progress-container">
+              <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+              </div>
+              <span class="progress-text" id="progress-text">1 / 1</span>
+            </div>
+
+            <!-- Flashcard -->
+            <div class="flashcard-container" id="flashcard-container">
+              <div class="flashcard" id="flashcard" tabindex="0" role="button" aria-label="Cliquer pour retourner la carte">
+                <div class="flashcard-inner" id="flashcard-inner">
+                  <div class="flashcard-front">
+                    <span class="flashcard-label">Mot</span>
+                    <span class="flashcard-word" id="card-front-word"></span>
+                    <span class="flashcard-hint">Clique pour voir la traduction</span>
+                  </div>
+                  <div class="flashcard-back">
+                    <span class="flashcard-label">Traduction</span>
+                    <span class="flashcard-word" id="card-back-word"></span>
+                    <span class="flashcard-hint">Clique pour revenir</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="card-nav" id="card-nav">
+              <button class="btn btn-nav" id="btn-prev" title="Carte précédente" disabled>
+                <span class="nav-arrow">←</span>
+              </button>
+              <div class="card-actions">
+                <button class="btn btn-action btn-fail" id="btn-fail" title="Je ne savais pas">
+                  ✗ À revoir
+                </button>
+                <button class="btn btn-action btn-success" id="btn-success" title="Je savais !">
+                  ✓ Maîtrisé
+                </button>
+              </div>
+              <button class="btn btn-nav" id="btn-next" title="Carte suivante" disabled>
+                <span class="nav-arrow">→</span>
+              </button>
+            </div>
+
+            <!-- Session Score -->
+            <div class="session-score" id="session-score">
+              <span class="session-label">Session :</span>
+              <span class="session-correct" id="session-correct">0</span> ✓
+              <span class="session-divider">|</span>
+              <span class="session-wrong" id="session-wrong">0</span> ✗
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 2 : QUIZ -->
+      <section class="page quiz-mode" id="quiz-mode">
+        <div class="page-scroll-content">
+          <div class="quiz-header">
+            <h2>Mode Quiz</h2>
+            <div class="quiz-progress">
+              <span id="quiz-current">1</span> / <span id="quiz-total">0</span>
+            </div>
+          </div>
+
+          <div class="quiz-card" id="quiz-card">
+            <span class="quiz-label">Traduis ce mot :</span>
+            <span class="quiz-word" id="quiz-word"></span>
+          </div>
+
+          <div class="quiz-input-area">
+            <input type="text" id="quiz-input" class="form-input quiz-text-input" placeholder="Ta traduction..." autocomplete="off">
+            <button class="btn btn-primary" id="btn-quiz-check" type="button">Vérifier</button>
+          </div>
+
+          <div class="quiz-feedback" id="quiz-feedback" hidden>
+            <div class="quiz-feedback-content" id="quiz-feedback-content"></div>
+            <button class="btn btn-primary" id="btn-quiz-next" type="button">Suivant →</button>
+          </div>
+
+          <div class="quiz-results" id="quiz-results" hidden>
+            <div class="quiz-results-icon">🏆</div>
+            <h3>Quiz terminé !</h3>
+            <div class="quiz-score">
+              <span class="quiz-score-number" id="quiz-score-number">0</span>
+              <span class="quiz-score-total">/ <span id="quiz-score-total">0</span></span>
+            </div>
+            <p class="quiz-score-label" id="quiz-score-label">Excellent !</p>
+            <div class="quiz-results-actions">
+              <button class="btn btn-secondary" id="btn-quiz-restart" type="button">🔄 Recommencer</button>
+              <button class="btn btn-primary" id="btn-quiz-back" type="button">📖 Retour à l'étude</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 3 : LIST -->
+      <section class="page cards-list-section" id="cards-list-section">
+        <div class="page-scroll-content">
+          <div class="section-header">
+            <h2>Toutes les cartes</h2>
+            <div class="section-header-actions">
+              <!-- Controls Bar specific to List Page -->
+              <nav class="controls-bar" id="controls-bar">
+                <button class="btn btn-primary" id="btn-add-card" type="button">
+                  <span class="btn-icon">＋</span> Ajouter une carte
+                </button>
+                <div class="controls-right">
+                  <div class="stats" id="stats-display">
+                    <span class="stat-item" id="stat-total">
+                      <span class="stat-number">0</span> cartes
+                    </span>
+                    <span class="stat-divider">•</span>
+                    <span class="stat-item" id="stat-mastered">
+                      <span class="stat-number">0</span> maîtrisées
+                    </span>
+                  </div>
+                  <button class="btn btn-ghost" id="btn-shuffle" title="Mélanger les cartes" disabled>🔀</button>
+                  <button class="btn btn-ghost" id="btn-export" title="Exporter les cartes" disabled>📤</button>
+                  <button class="btn btn-ghost" id="btn-import" title="Importer des cartes">📥</button>
+                  <button class="btn btn-ghost btn-danger" id="btn-clear-all" title="Tout supprimer" disabled>🗑️</button>
+                </div>
+              </nav>
+            </div>
+          </div>
+          
+          <div class="cards-grid" id="cards-grid">
+            <!-- Cards injected by JS -->
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Bottom Navigation Bar (Fixed) -->
+    <div class="view-toggle" id="view-toggle">
+      <button class="toggle-btn active" id="toggle-study" data-view="study">
+        <span class="nav-icon">📖</span><span class="nav-text">Étude</span>
+      </button>
+      <button class="toggle-btn" id="toggle-quiz" data-view="quiz">
+        <span class="nav-icon">🧠</span><span class="nav-text">Quiz</span>
+      </button>
+      <button class="toggle-btn" id="toggle-list" data-view="list">
+        <span class="nav-icon">📋</span><span class="nav-text">Liste</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Dialogs (Add/Edit, Import) -->
+  <dialog class="dialog-add" id="dialog-add-card">
+    <form class="dialog-form" id="form-add-card">
+      <div class="dialog-header">
+        <h2 id="dialog-title">Nouvelle carte</h2>
+        <button class="btn btn-close" type="button" id="btn-close-dialog" aria-label="Fermer">✕</button>
+      </div>
+      <div class="dialog-body">
+        <div class="form-group">
+          <label for="input-word">Mot</label>
+          <input type="text" id="input-word" class="form-input" placeholder="Ex : Hello" required autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="input-translation">Traduction</label>
+          <input type="text" id="input-translation" class="form-input" placeholder="Ex : Bonjour" required autocomplete="off">
+        </div>
+      </div>
+      <div class="dialog-footer">
+        <button type="button" class="btn btn-secondary" id="btn-cancel-dialog">Annuler</button>
+        <button type="submit" class="btn btn-primary" id="btn-submit-card">
+          <span class="btn-icon">＋</span>
+          <span id="btn-submit-text">Ajouter</span>
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="dialog-add" id="dialog-import">
+    <form class="dialog-form" id="form-import">
+      <div class="dialog-header">
+        <h2>Importer des cartes</h2>
+        <button class="btn btn-close" type="button" id="btn-close-import" aria-label="Fermer">✕</button>
+      </div>
+      <div class="dialog-body">
+        <p class="import-info">Colle tes cartes au format <strong>mot ; traduction</strong> (une paire par ligne) :</p>
+        <textarea id="import-textarea" class="form-input import-textarea" rows="8" placeholder="Hello ; Bonjour&#10;Goodbye ; Au revoir&#10;Thank you ; Merci"></textarea>
+        <p class="import-hint">Séparateur : point-virgule (;) ou tabulation</p>
+      </div>
+      <div class="dialog-footer">
+        <button type="button" class="btn btn-secondary" id="btn-cancel-import">Annuler</button>
+        <button type="submit" class="btn btn-primary" id="btn-submit-import">📥 Importer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <input type="file" id="file-import-input" accept=".json" hidden>
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

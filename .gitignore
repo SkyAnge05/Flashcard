@@ -1,0 +1,25 @@
+# Dépendances Node.js
+node_modules/
+
+# Builds Electron (fichiers lourds à ne pas versionner)
+dist/
+out/
+*.AppImage
+*.exe
+*.zip
+*.tar.gz
+
+# Builds Android
+android-app/.gradle/
+android-app/build/
+android-app/app/build/
+android-app/local.properties
+*.apk
+*.aab
+
+# Fichiers système et éditeurs
+.vscode/
+.idea/
+.DS_Store
+*.swp
+Thumbs.db
